@@ -15,8 +15,6 @@ export const image_email = require('../images/mail.png')
 export const image_logo = require('../images/app_image.png')
 
 export const image_group = require('../images/group_users.png')
-export const image_google = require('../images/google.png')
-export const image_facebook = require('../images/facebook.png')
 export const image_sucess = require('../images/checked.png')
 export const image_error = require('../images/cross.png')
 export const image_plus = require('../images/plus.png')
@@ -41,8 +39,10 @@ export const IMAGES = {
   image_state: require('../images/state.png'),
   image_pincode: require('../images/pincode.png'),
   image_radio_unselected: require('../images/radio.png'),
-  image_radio_selected: require('../images/radio_selected.png')
-
+  image_radio_selected: require('../images/radio_selected.png'),
+  image_logo: require('../images/app_image.png'),
+  image_google: require('../images/google.png'),
+  image_facebook: require('../images/facebook.png')
 
 
 }

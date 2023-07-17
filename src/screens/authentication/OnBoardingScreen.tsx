@@ -28,9 +28,9 @@ const slides = [{
 }];
 
 
-export default function OnBoardingScreen({naviagte}:any) {
+export default function OnBoardingScreen({ navigation }: any) {
 
-  const navigation = useNavigation();
+  //const navigation = useNavigation();
 
   const [currentIndex, setCurrentIndex] = useState<any>(0);
   const ref: any = React.useRef();
@@ -123,7 +123,7 @@ export default function OnBoardingScreen({naviagte}:any) {
               //   key: 'Login',
               //   routeNames: [{name:'Login'}]
               // })
-             navigation.navigate('Main' as never)
+              navigation.navigate('Login')//
             }}
               style={[stylesApp.btn
                 , { backgroundColor: 'transparent', borderWidth: 1, borderColor: 'white', marginRight: 5 }]}>
@@ -138,9 +138,12 @@ export default function OnBoardingScreen({naviagte}:any) {
                 })
               } else {
                 // navigation.reset({
-                //   key: 'Main',
-                //   routes: [{ name: 'Main' }]
+                //   key: 'Login',
+                //   routeNames: [{name:'Login'}]
                 // })
+            
+
+                navigation.navigate('Login')//
               }
             }} style={[stylesApp.btn, { marginLeft: 5 }]} >
               <Text style={stylesApp.appTextBold16}>{currentIndex < slides.length - 1 ? `NEXT` : `SUBMIT`}</Text>
