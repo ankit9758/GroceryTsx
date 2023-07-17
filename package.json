@@ -25,7 +25,9 @@
     "react-native-toast-message": "^2.1.6",
     "react-native-uuid": "^2.0.1",
     "react-redux": "^8.1.1",
-    "redux-persist": "^6.0.0"
+    "redux": "^4.2.1",
+    "redux-persist": "^6.0.0",
+    "redux-persist-transform-encrypt": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

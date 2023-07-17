@@ -25,12 +25,6 @@ export default function AddAddress({ navigation }: any) {
         console.log('add address', route.params)
 
     }, [])
-
-    // const [state, setState] = useState(routes.params.types === 'edit' ? routes.params.data.state : '')
-    // const [city, setCity] = useState(routes.params.types === 'edit' ? routes.params.data.city : '')
-    // const [pincode, setPincode] = useState(routes.params.types === 'edit' ? routes.params.data.pincode : '')
-    // const [type, setType] = useState(routes.params.types === 'edit' ? routes.params.data.type == 'Home' ? 1 : 2 : 1)
-
     const disptach: any = useDispatch();
 
     const [state, setState] = useState(route.params.types === 'edit' ? route.params.data.state : '')
