@@ -1,11 +1,20 @@
 import { useEffect } from "react";
 import AppNavigator from "./src/AppNavigator";
 import RNBootSplash from "react-native-bootsplash";
+import { store } from './src/redux/store';
+import { Provider } from "react-redux";
+// import persistStore from 'redux-persist'
+// import { PersistGate } from 'redux-persist/integration/react'
 const App = () => {
     useEffect(() => {
         RNBootSplash.hide({ fade: true, duration: 5000 });
     },);
-    return (<AppNavigator />)
+    return (
+        <Provider store={store}>
+
+            <AppNavigator />
+        </Provider>
+    )
 
 
 

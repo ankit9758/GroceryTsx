@@ -6,19 +6,22 @@ import Header from '../../common/Header';
 import { IMAGES } from '../../utils/Images';
 import NoDataFound from '../../common/NoDatafound';
 import { SimpleModal } from '../../common/Dialogs';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { deleteAddress } from '../../redux/AddressSlice';
 
 export default function SavedAddress({ routes, navigation }: any) {
 
-    // const addressList = useSelector(state => state.address)
+    const addressList = useSelector((state: RootState) => state.address.data)
     const isFocused = useIsFocused();
     const [loading, setLoading] = useState(true);
     const [refreshing, setRefreshing] = useState(false);
     const [id, setId] = useState('');
     const [visible, setVisible] = useState(false)
-    // const disptach = useDispatch();
+    const disptach: any = useDispatch();
 
     useEffect(() => {
-        //console.log(addressList)
+        console.log(addressList)
         setTimeout(() => {
             setLoading(false)
         }, 3000)
@@ -48,31 +51,28 @@ export default function SavedAddress({ routes, navigation }: any) {
             {loading ? (<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <ActivityIndicator size={70} color="#0000ff" />
             </View>) : (
-                <FlatList data={[1, 1, 1, 1]} showsVerticalScrollIndicator={false} renderItem={({ item, index }) => {
+                <FlatList data={addressList} showsVerticalScrollIndicator={false} renderItem={({ item, index }) => {
                     return (
                         <View style={styles.addressItems}>
-                            {/* <Text style={styles.stateText}>{` State: ${item.state}`}</Text> */}
-                            <Text style={styles.stateText}>{` State:`}</Text>
-                            {/* <Text style={styles.cityText}>{` City: ${item.city}`}</Text> */}
-                            <Text style={styles.cityText}>{` City:`}</Text>
-                            {/* <Text style={styles.pincode}>{` Pincode: ${item.pincode}`}</Text> */}
-                            <Text style={styles.pincode}>{` Pincode:`}</Text>
-                            {/* <Text style={[styles.stateText, {
-                                position: 'absolute', right: 10, top: 10, color: white,
-                                backgroundColor: primaryColor, paddingHorizontal: 10, paddingVertical: 5, borderRadius: 10
-                            }]}>{item.type}</Text> */}
+                            <Text style={styles.stateText}>{` State: ${item.state}`}</Text>
+
+                            <Text style={styles.cityText}>{` City: ${item.city}`}</Text>
+
+                            <Text style={styles.pincode}>{` Pincode: ${item.pincode}`}</Text>
+
                             <Text style={[styles.stateText, {
                                 position: 'absolute', right: 10, top: 10, color: white,
                                 backgroundColor: primaryColor, paddingHorizontal: 10, paddingVertical: 5, borderRadius: 10
-                            }]}>Home</Text>
+                            }]}>{item.type}</Text>
+
                             <View style={styles.addressActions}>
                                 <TouchableOpacity onPress={() => {
-                                    navigation.navigate('AddAddress', { type: 'edit', data: item })
+                                    navigation.navigate('AddAddress', { types: 'edit', data: item })
                                 }}>
                                     <Image style={styles.imgStyle} source={IMAGES.image_edit} />
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={() => {
-                                    //setId(item.id)
+                                    setId(item.id)
                                     setVisible(true)
                                 }}>
                                     <Image style={styles.imgStyle} source={IMAGES.image_delete} />
@@ -109,7 +109,7 @@ export default function SavedAddress({ routes, navigation }: any) {
                     setVisible(false)
                 }} onYesClick={() => {
                     setVisible(false)
-                    //disptach(deleteAddress(id))
+                    disptach(deleteAddress(id))
                 }}
             />
         </View>
