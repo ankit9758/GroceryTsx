@@ -10,13 +10,13 @@ import { useSelector } from "react-redux";
 
 type PropType = {
   title?: string, leftIcon?: any, rightIcon?:
-  any, onClickLeftIcon: any, onclickRightIcon: any, isCartScreen?: boolean
+  any, onClickLeftIcon: any, onClickRightIcon?: () => void, isCartScreen?: boolean
 }
 
 
 const Header = (props: PropType) => {
   const { title, leftIcon, rightIcon,
-    onClickLeftIcon, onclickRightIcon, isCartScreen } = props
+    onClickLeftIcon, onClickRightIcon, isCartScreen } = props
   // const cardData = useSelector(state => state.cartData)
 
   //console.log('cart------->', cardData.data.length)
@@ -26,7 +26,7 @@ const Header = (props: PropType) => {
         <Image source={leftIcon} style={styles.icon} />
       </TouchableOpacity>
       <Text style={styles.title}>{title}</Text>
-      <TouchableOpacity style={styles.btn} onPress={onclickRightIcon}>
+      <TouchableOpacity style={styles.btn} onPress={onClickRightIcon}>
         <Image source={rightIcon} style={styles.icon} />
       </TouchableOpacity>
       {/* {(isCartScreen ==false ||cardData.data.length==0) ? null : <View style={styles.uploadBackStyle}>

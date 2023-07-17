@@ -4,7 +4,7 @@ import AppTextInput from '../../common/AppTextInput'
 import { black, primaryColor, white } from '../../utils/Colors'
 import { useDispatch } from 'react-redux'
 import { ThemeContext } from '../../utils/ThemeContext'
-import { IMAGES, image_add, image_city, image_home, image_sucess, image_wishlist } from "../../utils/Images";
+import { IMAGES, image_add, image_home, image_sucess, image_wishlist } from "../../utils/Images";
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './bottomTabs/Home'
@@ -103,7 +103,7 @@ const Main = () => {
       }} />
       <Tab.Screen name="Settings" component={Settings} options={{
         tabBarIcon: ({ focused }: any) => (<View style={{ justifyContent: 'center', alignItems: 'center' }}>
-          <Image source={image_city} resizeMode="contain" style={[styles.bottomTabIcon, { tintColor: focused ? white : black }]} />
+          <Image source={IMAGES.image_city} resizeMode="contain" style={[styles.bottomTabIcon, { tintColor: focused ? white : black }]} />
           <Text style={[styles.appTextBold14, { fontFamily: focused ? 'Raleway-Black' : 'Raleway-Regular', color: focused ? white : black }]}>Settings</Text>
         </View>)
       }} />

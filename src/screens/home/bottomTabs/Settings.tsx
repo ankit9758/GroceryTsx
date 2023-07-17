@@ -91,13 +91,13 @@ export default function Settings({ routes, navigation }: any) {
               navigation.navigate('SavedAddress')
             }} />
             <ProfileItems leftIcon={IMAGES.image_cart} title={'My Chats'} onClick={() => {
-              //  navigation.navigate('ChatList')
+                navigation.navigate('ChatList')
             }} />
             <ProfileItems leftIcon={IMAGES.image_password} title={'Change Password '} onClick={() => {
-              //navigation.navigate('ChangePassword') 
+             navigation.navigate('ChangePassword') 
             }} />
             <ProfileItems leftIcon={IMAGES.image_language} title={'Languages'} onClick={() => {
-              //navigation.navigate('BottomNavigation') 
+              navigation.navigate('BottomNavigation') 
             }} />
             <ProfileItems leftIcon={IMAGES.image_logout} title={'Log out'} onClick={() => { setVisible(true) }} />
           </View>

@@ -1,12 +1,4 @@
 
-export const image_city = require('../images/city.png')
-export const image_state = require('../images/state.png')
-export const image_pincode = require('../images/pincode.png')
-export const image_radio_unselected = require('../images/radio.png')
-export const image_radio_selected = require('../images/radio_selected.png')
-export const image_back = require('../images/left.png')
-export const image_delete = require('../images/delete.png')
-
 export const image_wishlist = require('../images/heart_filled.png')
 export const image_cart = require('../images/wishlist.png')
 export const image_add_wishlist = require('../images/heart.png')
@@ -30,7 +22,6 @@ export const image_error = require('../images/cross.png')
 export const image_plus = require('../images/plus.png')
 export const image_phone = require('../images/phone.png')
 export const image_name = require('../images/name.png')
-
 export const IMAGES = {
   image_search: require('../images/magnifying_glass.png'),
   image_logout: require('../images/logout.png'),
@@ -44,7 +35,15 @@ export const IMAGES = {
   image_back: require('../images/left.png'),
   image_name: require('../images/name.png'),
   image_email: require('../images/mail.png'),
-  image_phone : require('../images/phone.png')
+  image_phone: require('../images/phone.png'),
+  image_delete: require('../images/delete.png'),
+  image_city: require('../images/city.png'),
+  image_state: require('../images/state.png'),
+  image_pincode: require('../images/pincode.png'),
+  image_radio_unselected: require('../images/radio.png'),
+  image_radio_selected: require('../images/radio_selected.png')
+
+
 
 }
 

@@ -7,13 +7,18 @@ import OtpVerification from './screens/authentication/OtpVerification';
 import Login from './screens/authentication/Login';
 import Signup from './screens/authentication/Signup';
 import Main from './screens/home/Main';
+import SavedAddress from './screens/address/SavedAddress';
+import AddAddress from './screens/address/AddAddress';
+import EditProfile from './screens/user/EditProfile';
 
 
 const Stack = createNativeStackNavigator()
 const AppNavigator = (props: any) => {
-
+    // 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
     return (
         <NavigationContainer >
+
+            
             <Stack.Navigator>
                 <Stack.Screen name='Onboarding' component={OnBoardingScreen}
                     options={{ headerShown: false }} />
@@ -26,6 +31,13 @@ const AppNavigator = (props: any) => {
                 <Stack.Screen name='Main' component={Main}
                     options={{ headerShown: false }} />
 
+                <Stack.Screen name='SavedAddress' component={SavedAddress}
+                    options={{ headerShown: false }} />
+                <Stack.Screen name='AddAddress' component={AddAddress}
+                    options={{ headerShown: false }} />
+
+                <Stack.Screen name='EditProfile' component={EditProfile}
+                    options={{ headerShown: false }} />
             </Stack.Navigator>
 
         </NavigationContainer>)

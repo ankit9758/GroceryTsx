@@ -40,7 +40,6 @@ const style = StyleSheet.create({
 
     appButtonText: {
         fontSize: 18,
-        //color: {textColor},
         marginHorizontal: 15,
         textTransform: "none",
         fontFamily: 'Raleway-ExtraBold'
