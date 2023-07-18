@@ -8,7 +8,7 @@ import { IMAGES } from '../../utils/Images'
 import AppTextInput from '../../common/AppTextInput'
 import { useRoute } from '@react-navigation/native'
 import { useDispatch } from 'react-redux'
-import { addAddress, updateAddress } from '../../redux/AddressSlice'
+import { addAddress, updateAddress } from '../../redux/slices/AddressSlice'
 import uuid from 'react-native-uuid';
 
 export default function AddAddress({ navigation }: any) {

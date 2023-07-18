@@ -13,10 +13,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { SimpleModal } from '../../../common/Dialogs';
 // import { removeUserData } from '../../../redux/UserDataSlice';
 import showCustomToast from '../../../utils/Toastconfig';
+import { RootState } from '../../../redux/store';
 
 export default function Settings({ routes, navigation }: any) {
   // const disptach = useDispatch();
   // const userData = useSelector(state => state.userData)
+
+  const userData = useSelector((state: RootState) => state.userData)
   const [visible, setVisible] = useState<boolean>(false)
 
   const [imagePath, setImagePath] = useState('')
@@ -26,15 +29,15 @@ export default function Settings({ routes, navigation }: any) {
   // const navigation = useNavigation();
 
   useEffect(() => {
-    //console.log('user---Data----', userData.data)
-    // if (userData.data.email) {
-    //   // console.log('user---Data----11',userData)
+  console.log('user---Data----', userData.data)
+    if (userData.data.email) {
+      // console.log('user---Data----11',userData)
 
-    //   setName(userData.data['firstName'] + ' ' + userData.data['lastName'])
-    //   setPhoneNumber(userData.data['phoneNumber']);
-    //   setEmail(userData.data['email']);
-    //   setImagePath(userData.data['imagePath'])
-    // }
+      setName(userData.data['firstName'] + ' ' + userData.data['lastName'])
+      setPhoneNumber(userData.data['phoneNumber']);
+      setEmail(userData.data['email']);
+      setImagePath(userData.data['imagePath'])
+    }
   })
 
   const clearUserData = async (key: string) => {

@@ -123,7 +123,7 @@ export default function OnBoardingScreen({ navigation }: any) {
               //   key: 'Login',
               //   routeNames: [{name:'Login'}]
               // })
-              navigation.navigate('Login')//
+              navigation.navigate('Main')//
             }}
               style={[stylesApp.btn
                 , { backgroundColor: 'transparent', borderWidth: 1, borderColor: 'white', marginRight: 5 }]}>

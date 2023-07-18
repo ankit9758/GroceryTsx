@@ -8,7 +8,7 @@ import NoDataFound from '../../common/NoDatafound';
 import { SimpleModal } from '../../common/Dialogs';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-import { deleteAddress } from '../../redux/AddressSlice';
+import { deleteAddress } from '../../redux/slices/AddressSlice';
 
 export default function SavedAddress({ routes, navigation }: any) {
 
