@@ -1,9 +1,13 @@
-import { ActivityIndicator, Image,FlatList, RefreshControl, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, Image, FlatList, RefreshControl, StatusBar, StyleSheet, Text, TouchableOpacity, View, Alert } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { black, green, primaryColor, white } from '../../../utils/Colors';
 import { useIsFocused } from '@react-navigation/native';
 import { IMAGES } from '../../../utils/Images';
 import NoDataFound from '../../../common/NoDatafound';
+import { useDispatch, useSelector } from 'react-redux';
+import { ProductRootState } from '../../products/model/products';
+import { FAILED, SUCCESS } from '../../../utils/AppConstant';
+import { getProductList } from '../../products/service/action';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -11,14 +15,32 @@ export default function Home() {
   const [visible, setVisible] = useState(false)
   const isFocused = useIsFocused();
 
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setLoading(false)
+  //   }, 3000)
+  // }, [isFocused])
+
+
+
+  const dispatch = useDispatch<any>();
+
+  const { products, status, message } = useSelector((state: ProductRootState) => state.products);
+  
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false)
-    }, 3000)
-  }, [isFocused])
+    dispatch(getProductList({email:'ankit',password:"Ankit singfh "}))
+  }, []);
+
+  useEffect(() => {
+    if (status === SUCCESS) {
+      Alert.alert(`SUCESS==>`);
+    } else if (status === FAILED) {
+      Alert.alert(`Errror==>${message}`);
+    }
+  }, [status]);
 
   const handleRefresh = () => {
- 
+
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
@@ -27,20 +49,20 @@ export default function Home() {
   };
 
   return (
-  
-  <View style={styles.container}>
-    
-     
+
+    <View style={styles.container}>
+
+
 
       {loading ? (<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <ActivityIndicator size={70} color="#0000ff" />
       </View>) : (
-        <FlatList data={[1,1,1,1,1]} showsVerticalScrollIndicator={false} renderItem={({ item, index }) => {
+        <FlatList data={[1, 1, 1, 1, 1]} showsVerticalScrollIndicator={false} renderItem={({ item, index }) => {
           return (
             <View style={styles.addressItems}>
-              <Text style={styles.stateText}>{` State:`}</Text>
-              <Text style={styles.cityText}>{` City:`}</Text>
-              <Text style={styles.pincode}>{` Pincode:`}</Text>
+              <Text style={styles.stateText}>{` Name:`}</Text>
+              <Text style={styles.cityText}>{` Description:`}</Text>
+              <Text style={styles.pincode}>{` Price:`}</Text>
 
 
             </View>);
@@ -52,22 +74,22 @@ export default function Home() {
           }
           ListEmptyComponent={
             <NoDataFound description={'Please Add any adress'}
-              btnText={'Refresh'} onClick={()=>{ handleRefresh()}} />
+              btnText={'Refresh'} onClick={() => { handleRefresh() }} />
           }
         />
       )
       }
- 
+
     </View>
- 
-  
+
+
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: white,padding:10
+    backgroundColor: white, padding: 10
   },
   addButton: {
     width: 60,

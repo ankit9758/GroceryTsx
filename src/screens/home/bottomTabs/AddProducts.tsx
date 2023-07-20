@@ -7,60 +7,60 @@ import { IMAGES } from '../../../utils/Images'
 import { validateEmpty, validateName } from '../../../common/Validaton'
 
 export default function AddProducts() {
-  const [firstName, setFirstName] = useState<string>('')
-  const [address, setAddress] = useState<string>('')
-  const [email, setEmail] = useState<string>('')
+  const [name, setName] = useState<string>('')
+  const [price, setPrice] = useState<string>('')
+  const [description, setDescription] = useState<string>('')
 
-  const emailRef: any = React.useRef()
-  const addressRef: any = React.useRef()
-  const firstNameRef: any = React.useRef()
+  const priceRef: any = React.useRef()
+  const descriptionRef: any = React.useRef()
+  const nameRef: any = React.useRef()
 
-  const [addressError, setAddressError] = useState<string>('')
-  const [emailError, setEmailError] = useState<string>('')
-  const [firstNameError, setFirstNameError] = useState<string>('')
+  const [priceError, setPriceError] = useState<string>('')
+  const [descriptionError, setDescriptionError] = useState<string>('')
+  const [nameError, setNameError] = useState<string>('')
   return (
     <View style={{ padding: 20 }}>
 
-      <AppTextInput placeholder={'Enter First Name'} type={'default'}
-        icon={IMAGES.image_name} isLast={false} value={firstName}
-        onChangeText={(text: string) => { setFirstName(text) }}
-        reference={firstNameRef}
-        onSubmit={() => emailRef.current.focus()} />
-      {<Text style={[styles.errorText12]}>{firstNameError}</Text>}
+      <AppTextInput placeholder={'Enter Product Name'} type={'default'}
+        icon={IMAGES.image_name} isLast={false} value={name}
+        onChangeText={(text: string) => { setName(text) }}
+        reference={nameRef}
+        onSubmit={() => descriptionRef.current.focus()} />
+      {<Text style={[styles.errorText12]}>{nameError}</Text>}
 
 
-      <AppTextInput placeholder={'Enter Email Id'} type={'email-address'}
-        icon={IMAGES.image_email} isLast={false} value={email}
-        onChangeText={(text: string) => { setEmail(text) }}
-        reference={emailRef}
-        onSubmit={() => addressRef.current.focus()} />
-      {<Text style={[styles.errorText12]}>{emailError}</Text>}
+      <AppTextInput placeholder={'Enter Product Description'} type={'default'}
+        icon={IMAGES.image_email} isLast={false} value={description}
+        onChangeText={(text: string) => { setDescription(text) }}
+        reference={descriptionRef}
+        onSubmit={() => priceRef.current.focus()} />
+      {<Text style={[styles.errorText12]}>{descriptionError}</Text>}
 
-      <AppTextInput placeholder={'Enter address'} type={'default'}
-        icon={IMAGES.image_address} isLast={true} value={address}
-        onChangeText={(text: string) => { setAddress(text) }}
-        reference={addressRef}
+      <AppTextInput placeholder={'Enter Product Price'} type={'default'}
+        icon={IMAGES.image_address} isLast={true} value={price}
+        onChangeText={(text: string) => { setPrice(text) }}
+        reference={priceRef}
         onSubmit={() => Keyboard.dismiss()} />
-      {<Text style={[styles.errorText12]}>{addressError}</Text>}
+      {<Text style={[styles.errorText12]}>{priceError}</Text>}
 
-      <AppButton title={'Add user '} onPress={() => {
-        if (validateEmpty(firstName)) {
-          setFirstNameError('Please enter first name')
-        } else if (!validateName(firstName)) {
-          setFirstNameError('Please enter valid first name')
-        } else if (validateEmpty(email)) {
-          setFirstNameError('')
-          setEmailError('Please enter Email')
+      <AppButton title={'Add Product '} onPress={() => {
+        if (validateEmpty(name)) {
+          setNameError('Please enter Product name')
+        } else if (!validateName(name)) {
+          setNameError('Please enter valid product name')
+        } else if (validateEmpty(description)) {
+          setNameError('')
+          setDescriptionError('Please enter Email')
         }
-        else if (validateEmpty(address)) {
-          setFirstNameError('')
-          setEmailError('')
-          setAddressError('Please enter address')
+        else if (validateEmpty(price)) {
+          setNameError('')
+          setDescriptionError('')
+          setPriceError('Please enter address')
         }
         else {
-          setFirstNameError('')
-          setEmailError('')
-          setAddressError('')
+          setNameError('')
+          setDescriptionError('')
+          setPriceError('')
 
         }
 

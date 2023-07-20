@@ -7,6 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { persistReducer } from 'redux-persist';
 import { UserDataSlice } from './slices/UserDataSlice'; // Import the UserDataSlice
+import productSlice from '../screens/products/service/product.slice';
 
 
 
@@ -19,6 +20,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   address: addressReducer,
   userData: UserDataSlice.reducer, // Add the UserDataSlice reducer as 'userData'
+  products: productSlice
   // Add other reducers here
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
