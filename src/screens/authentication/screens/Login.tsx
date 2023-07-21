@@ -1,17 +1,17 @@
 import { Image, Keyboard, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { black, blue, darkRed, primaryColor, white } from '../../utils/Colors';
-import OverlayActivityIndicator from '../../common/Loader';
-import { IMAGES } from '../../utils/Images';
-import AppTextInput from '../../common/AppTextInput';
-import AppButton from '../../common/AppButton';
-import { isValidEmail, validateEmpty, validatePassword } from '../../common/Validaton';
-import SocialButton from '../../common/SocialButton';
+import { black, blue, darkRed, primaryColor, white } from '../../../utils/Colors';
+import OverlayActivityIndicator from '../../../common/Loader';
+import { IMAGES } from '../../../utils/Images';
+import AppTextInput from '../../../common/AppTextInput';
+import AppButton from '../../../common/AppButton';
+import { isValidEmail, validateEmpty, validatePassword } from '../../../common/Validaton';
+import SocialButton from '../../../common/SocialButton';
 import { Toast } from 'react-native-toast-message/lib/src/Toast';
-import showCustomToast, { toastConfig } from '../../utils/Toastconfig';
-import { ForgotPasswordModal } from '../../common/Dialogs';
-import { ERROR, NORMAL, SUCESS } from '../../utils/AppConstant';
-import { UserDataSlice, addUserData } from '../../redux/slices/UserDataSlice';
+import showCustomToast, { toastConfig } from '../../../utils/Toastconfig';
+import { ForgotPasswordModal } from '../../../common/Dialogs';
+import { ERROR, NORMAL, SUCESS } from '../../../utils/AppConstant';
+import { UserDataSlice, addUserData } from '../../../redux/slices/UserDataSlice';
 import { useDispatch } from 'react-redux';
 
 export default function Login({ navigation }: any) {

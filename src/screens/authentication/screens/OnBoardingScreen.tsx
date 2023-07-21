@@ -3,8 +3,8 @@ import {
   StyleSheet, Text, TouchableOpacity, View, Animated
 } from 'react-native'
 import React, { useRef, useState } from 'react';
-import { black, green, primaryColor, white } from '../../utils/Colors';
-import stylesApp from '../../utils/styles';
+import { black, green, primaryColor, white } from '../../../utils/Colors';
+import stylesApp from '../../../utils/styles';
 import { useNavigation } from '@react-navigation/native'
 
 const { height, width } = Dimensions.get('window');

@@ -6,11 +6,10 @@ import { IMAGES } from '../../../utils/Images';
 import NoDataFound from '../../../common/NoDatafound';
 import { useDispatch, useSelector } from 'react-redux';
 import { ProductRootState } from '../../products/model/products';
-import { FAILED, SUCCESS } from '../../../utils/AppConstant';
+import { FAILED, LOADING, SUCCESS } from '../../../utils/AppConstant';
 import { getProductList } from '../../products/service/action';
 
 export default function Home() {
-  const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [visible, setVisible] = useState(false)
   const isFocused = useIsFocused();
@@ -26,14 +25,14 @@ export default function Home() {
   const dispatch = useDispatch<any>();
 
   const { products, status, message } = useSelector((state: ProductRootState) => state.products);
-  
+
   useEffect(() => {
-    dispatch(getProductList({email:'ankit',password:"Ankit singfh "}))
+    dispatch(getProductList({ email: 'ankit', password: "Ankit singfh " }))
   }, []);
 
   useEffect(() => {
     if (status === SUCCESS) {
-      Alert.alert(`SUCESS==>`);
+      console.log('Home pagedata ', products)
     } else if (status === FAILED) {
       Alert.alert(`Errror==>${message}`);
     }
@@ -41,11 +40,11 @@ export default function Home() {
 
   const handleRefresh = () => {
 
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-      setRefreshing(false)
-    }, 3000)
+    // setLoading(true)
+    // setTimeout(() => {
+    //   setLoading(false)
+    //   setRefreshing(false)
+    // }, 3000)
   };
 
   return (
@@ -54,17 +53,15 @@ export default function Home() {
 
 
 
-      {loading ? (<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      {status === LOADING ? (<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <ActivityIndicator size={70} color="#0000ff" />
       </View>) : (
-        <FlatList data={[1, 1, 1, 1, 1]} showsVerticalScrollIndicator={false} renderItem={({ item, index }) => {
+        <FlatList data={products} showsVerticalScrollIndicator={false} renderItem={({ item, index }) => {
           return (
             <View style={styles.addressItems}>
-              <Text style={styles.stateText}>{` Name:`}</Text>
-              <Text style={styles.cityText}>{` Description:`}</Text>
-              <Text style={styles.pincode}>{` Price:`}</Text>
-
-
+              <Text style={styles.stateText}>{` Name: ${item.title}`}</Text>
+              <Text style={styles.cityText}>{` Description: ${item.description}`}</Text>
+              <Text style={styles.pincode}>{` Price: ${item.price}`}</Text>
             </View>);
 
         }}

@@ -2,6 +2,8 @@
 import thunk from 'redux-thunk';
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import { httpGetProductList } from './api';
+import { ApiError } from '../model/products';
+import { AxiosError } from 'axios';
 
 
 export const getProductList = createAsyncThunk(
@@ -20,12 +22,13 @@ export const getProductList = createAsyncThunk(
         const response: any = await httpGetProductList(email, password);
         //will store token into local storage
         // await loginUser(response.data.access_token);
-        console.log('Response Login ::::::', response);
+        console.log('Response Login ::::::', response.status);
         return response.data;
       } catch (err) {
-        console.log('something went wrong in case of login ', err);
+        var excepion=err as AxiosError
+        console.log(`something ${excepion.cause}`);
         // throw new Error('Error yha hai bhai')
-        return thunkAPI.rejectWithValue('something went wrong');
+        return thunkAPI.rejectWithValue(err);
       }
     },
   );

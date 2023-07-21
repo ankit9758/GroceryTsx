@@ -2,10 +2,10 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import OnBoardingScreen from './screens/authentication/OnBoardingScreen';
-import OtpVerification from './screens/authentication/OtpVerification';
-import Login from './screens/authentication/Login';
-import Signup from './screens/authentication/Signup';
+import OnBoardingScreen from './screens/authentication/screens/OnBoardingScreen';
+import OtpVerification from './screens/authentication/screens/OtpVerification';
+import Login from './screens/authentication/screens/Login';
+import Signup from './screens/authentication/screens/Signup';
 import Main from './screens/home/Main';
 import SavedAddress from './screens/address/SavedAddress';
 import AddAddress from './screens/address/AddAddress';

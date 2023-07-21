@@ -9,6 +9,11 @@ type Product = {
     price: any
 }
 
+type ApiError = {
+    status: any,
+    message: String
+}
+
   export type ProductRootState = {
     products: {
         status: Status, 
