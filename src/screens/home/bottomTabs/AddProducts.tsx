@@ -1,10 +1,15 @@
-import { Keyboard, StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
+import { Alert, Keyboard, StyleSheet, Text, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import AppTextInput from '../../../common/AppTextInput'
 import { black, darkRed, primaryColor, white } from '../../../utils/Colors'
 import AppButton from '../../../common/AppButton'
 import { IMAGES } from '../../../utils/Images'
 import { validateEmpty, validateName } from '../../../common/Validaton'
+import { useDispatch, useSelector } from 'react-redux'
+import { ProductRootState } from '../../products/model/products'
+import { addProducts } from '../../products/service/action'
+import { FAILED, LOADING, SUCCESS } from '../../../utils/AppConstant'
+import Loader from '../../../common/Loader'
 
 export default function AddProducts() {
   const [name, setName] = useState<string>('')
@@ -18,9 +23,26 @@ export default function AddProducts() {
   const [priceError, setPriceError] = useState<string>('')
   const [descriptionError, setDescriptionError] = useState<string>('')
   const [nameError, setNameError] = useState<string>('')
+
+
+  const dispatch = useDispatch<any>();
+
+  const { products, status, message } = useSelector((state: ProductRootState) => state.products);
+
+
+  useEffect(() => {
+    if (status === SUCCESS) {
+      console.log('Home pagedata ', )
+    } else if (status === FAILED) {
+      Alert.alert(`Errror==>${message}`);
+    }
+  }, [status]);
+
+
+
   return (
     <View style={{ padding: 20 }}>
-
+      {status == LOADING && <Loader />}
       <AppTextInput placeholder={'Enter Product Name'} type={'default'}
         icon={IMAGES.image_name} isLast={false} value={name}
         onChangeText={(text: string) => { setName(text) }}
@@ -61,7 +83,11 @@ export default function AddProducts() {
           setNameError('')
           setDescriptionError('')
           setPriceError('')
-
+          dispatch(addProducts({ title: name, description: description, price: price }))
+          .then((data:any)=>{
+            console.log('ADddd---Data',data)
+          })
+          
         }
 
       }} />
